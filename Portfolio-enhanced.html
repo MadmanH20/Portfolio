@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Nurnajmi | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <link rel="stylesheet" href="hero-styles.css" />
+  <style>
+    :root {
+      --primary-color: #007acc;
+      --bg-light: #ffffff;
+      --bg-dark: #121212;
+      --text-light: #333;
+      --text-dark: #f1f1f1;
+      --card-light: #f8faff;
+      --card-dark: #1e1e1e;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      scroll-behavior: smooth;
+      transition: background-color 0.5s, color 0.5s;
+    }
+    nav {
+      background: #e6f0ff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav h1 {
+      color: var(--primary-color);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav ul li a.active {
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--primary-color);
+    }
+    nav ul li a:hover {
+      color: var(--primary-color);
+    }
+    header {
+      text-align: center;
+      padding: 6rem 2rem;
+      background: linear-gradient(to right, #e6f0ff, #ffffff);
+      background-attachment: fixed;
+    }
+    header h1 {
+      font-size: 2.8rem;
+      color: var(--primary-color);
+      animation: fadeInDown 1s ease;
+    }
+    header p {
+      font-size: 1.1rem;
+      margin-top: 1rem;
+      animation: fadeInUp 1s ease;
+    }
+    section {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s forwards;
+    }
+    h2 {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    .card {
+      background-color: var(--card-light);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-top: 1rem;
+      box-shadow: 0 5px 15px rgba(0, 122, 204, 0.05);
+      transition: background-color 0.3s;
+    }
+    body.dark-mode .card {
+      background-color: var(--card-dark);
+    }
+    .contact-form-wrapper {
+      background: #f4f9ff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    }
+    .contact-form-wrapper h3 {
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    .form-group textarea {
+      resize: vertical;
+    }
+    .form-submit {
+      background: var(--primary-color);
+      color: #fff;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .form-submit:hover {
+      background: #005fa3;
+    }
+    footer {
+      background: #e6f0ff;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 4rem;
+    }
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    .toggle-btn {
+      background: none;
+      border: 2px solid var(--primary-color);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      color: var(--primary-color);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .toggle-btn:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 5px;
+      background-color: var(--primary-color);
+      z-index: 2000;
+      transition: width 0.25s ease;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        margin-top: 0.5rem;
+      }
+      nav ul li a {
+        font-size: 1.1rem;
+      }
+      header {
+        padding: 4rem 1rem;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      section {
+        padding: 2rem 1rem;
+        max-width: 100%;
+      }
+      .card {
+        padding: 1rem;
+      }
+      .contact-form-wrapper {
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav ul li a {
+        font-size: 1rem;
+      }
+      header h1 {
+        font-size: 1.5rem;
+      }
+      header p {
+        font-size: 0.9rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      .form-group input,
+      .form-group textarea {
+        font-size: 0.9rem;
+        padding: 0.75rem;
+      }
+      .form-submit {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Skills badges styles */
+    .skill-category {
+      margin-bottom: 1.5rem;
+    }
+    .skill-category h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.75rem;
+    }
+    .skill-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.75rem;
+    }
+    .skill-badge {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(0, 122, 204, 0.3);
+      transition: background-color 0.3s ease;
+      cursor: default;
+    }
+    .skill-badge:hover {
+      background-color: #005fa3;
+    }
+  </style>
+
+  <style>
+    /* Hero section styles */
+    .hero-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #007acc 0%, #005fa3 100%);
+      color: white;
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-content {
+      max-width: 700px;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+    .hero-section h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: 1.5px;
+    }
+    .hero-section p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+    .hero-cta {
+      background-color: white;
+      color: #007acc;
+      border: none;
+      padding: 0.75rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 122, 204, 0.4);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .hero-cta:hover {
+      background-color: #005fa3;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <nav>
+    <h1>Nurnajmi</h1>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="toggle-btn" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">Let's Talk</button>
+  </nav>
+
+  <header class="hero-section">
+    <div class="hero-content">
+      <div class="hero-image-wrapper">
+        <img src="new me.jpg" alt="Muhammad Nurnajmi" class="hero-image" />
+      </div>
+      <div class="hero-text">
+        <h1>MUHAMMAD NURNAJMI BIN KHAIRUL NAZRI</h1>
+        <p>Web Developer and Programmer</p>
+        <button class="hero-cta" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">Contact Me</button>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="card">
+      <p>
+        I'm a diploma graduate in IT, passionate about solving complex problems
+        and building optimized web solutions. With strong skills in both
+        front-end and back-end development, I thrive on turning ideas into
+        efficient and scalable systems.
+      </p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills & Technologies</h2>
+    <div class="card">
+      <div class="skill-category">
+        <h3>Soft Skills</h3>
+        <div class="skill-badges">
+          <span class="skill-badge">Teamwork</span>
+          <span class="skill-badge">Problem Solving</span>
+          <span class="skill-badge">Time Management</span>
+          <span class="skill-badge">Fast Learner</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Programming</h3>
+        <div class="skill-badges">
+          <span class="skill-badge">HTML</span>
+          <span class="skill-badge">CSS</span>
+          <span class="skill-badge">JavaScript</span>
+          <span class="skill-badge">PHP</span>
+          <span class="skill-badge">Python</span>
+          <span class="skill-badge">C++</span>
+          <span class="skill-badge">Java</span>
+          <span class="skill-badge">SQL</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Database</h3>
+        <div class="skill-badges">
+          <span class="skill-badge">MySQL</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Tools</h3>
+        <div class="skill-badges">
+          <span class="skill-badge">PC Troubleshooting</span>
+          <span class="skill-badge">Report Writing</span>
+          <span class="skill-badge">MS Office</span>
+          <span class="skill-badge">Premiere Pro</span>
+          <span class="skill-badge">Canva</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Languages</h3>
+        <div class="skill-badges">
+          <span class="skill-badge">Bahasa Malaysia (Native)</span>
+          <span class="skill-badge">English (Fluent)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="card">
+      <h3>Torto Food Website Development</h3>
+      <p>
+        Led the complete development of the
+        <a href="https://tortofood.com" target="_blank">Torto Food</a> website
+        during my internship. Built with WordPress Elementor to ensure a
+        responsive, clean, and user-friendly experience.
+      </p>
+      <div class="project-images">
+        <img src="ss1.png" alt="Torto Food Screenshot 1" />
+        <img src="ss2.png" alt="Torto Food Screenshot 2" />
+        <img src="ss3.png" alt="Torto Food Screenshot 3" />
+        <img src="ss4.png" alt="Torto Food Screenshot 4" />
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Work Experience</h2>
+    <div class="card">
+      <img src="bigdomain.png" alt="Big Domain Logo" class="work-experience-logo" />
+      <h3>Web Design Intern at Big Domain Sdn Bhd</h3>
+      <p><em>September 2024 – February 2025</em></p>
+      <p>
+        Designed and delivered 5+ client websites with WordPress and Elementor.
+        Transformed client visions into dynamic, professional online platforms,
+        earning consistent positive feedback and client retention.
+      </p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact-form-wrapper">
+      <h3>Let’s Get in Touch</h3>
+      <form action="mailto:madmanh20420@gmail.com" method="POST" enctype="text/plain">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            placeholder="Type your message here..."
+            required
+          ></textarea>
+        </div>
+        <button class="form-submit" type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-branding">
+        <h2>Nurnajmi</h2>
+        <p>Web Developer and Programmer</p>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h3>Connect with me</h3>
+        <a href="https://www.linkedin.com/in/muhammad-nurnajmi/" target="_blank" aria-label="LinkedIn" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/MadmanH20" target="_blank" aria-label="GitHub" class="social-icon"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <footer class="footer-bottom">
+    <p>&copy; 2025 Muhammad Nurnajmi. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav ul li a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - sectionHeight / 3) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
+
+      const scrollProgress = document.getElementById("scrollProgress");
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      scrollProgress.style.width = `${scrollPercent}%`;
+    });
+  </script>
+</body>
+</html>
